@@ -1,0 +1,94 @@
+
+{% extends 'app.html' %}
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/book.css">
+    <title>Ticket Booking</title>
+</head>
+
+<body>
+    <div class="container">
+    <h1>Ticket Booking</h1>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        {% for category, message in messages %}
+            <div class="alert alert-{{ category }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+    {% endwith %}
+    <div class="form-group">
+    <form action="/" method="POST">
+<!--     
+        <div class="form-group">
+            <select id="source" name="source" required>
+                <option value="">Source</option>
+                <option value="">Mumbai</option>
+                <option value="">Goa</option>
+                <option value="">Kerala</option>
+                
+            </select>
+        </div> -->
+        <div class="form-group">
+            <input type="text" id="source" name="source" placeholder=" source " required>
+        </div>
+        <!-- <div class="form-group">
+            <select id="dest" name="dest" required>
+                <option value="">Destination</option>
+                <option value="">Mumbai</option>
+                <option value="">Goa</option>
+                <option value="">Kerala</option>
+                
+            </select>
+        </div> -->
+        <div class="form-group">
+            <input type="text" id="dest" name="dest" placeholder=" Destination " required>
+        </div>
+        <div class="form-group">
+            <!-- <label for="date">DATE OF TRAVEL</label> -->
+            <input type="date" id="travelDate" name="travelDate" placeholder="DATE OF TRAVEL" required>
+        </div>
+    <div class="form-group">
+        <input type="number" id="totalpass" name="totalpass" placeholder="totalpass" required>
+    </div>
+
+    <div class="form-group">
+        <select id="bookingClass" name="bookingClass" required>
+            <option value="">class</option>
+            <option value="1">Economy</option>
+            <option value="2">Business</option>
+            <option value="3">First</option>
+            
+        </select>
+    </div>
+    <div class="form-group">
+        <input type="text" id="passmobnum" name="passmobnum" placeholder="PASSENGER PHONE NO. " required>
+    </div>
+   
+    <div class="form-group">
+        <select id="BookingStatus" name="BookingStatus" required>
+            <option value="">Status</option>
+            <option value="1">Availabile</option>
+            <option value="2">Full</option>
+            
+        </select>
+    </div>
+   
+    <div class="btn">
+
+    <input type="submit" value="PROCED TO PAYMENT"> 
+    
+    </div>
+</form>
+</div>
+</body>
+
+</html>
+
+{% endblock %}

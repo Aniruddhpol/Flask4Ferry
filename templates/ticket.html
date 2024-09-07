@@ -1,0 +1,78 @@
+{% extends 'app.html' %}
+{% block content %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/ticket.css">
+    <title>Ferry Ticket Booking</title>
+
+</head>
+<body onload="mult();">
+    <div class="container">
+        <h1> Tickets Availability </h1>
+        <form action="/detail" method="POST">
+            {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+            {% endwith %}
+            <!-- <div class="form-group">
+                <select id="source" name="source" required>
+                    <option value="">Source</option>
+                    <option value="">Mumbai</option>
+                    <option value="">Goa</option>
+                    <option value="">Kerala</option>
+                    
+                </select>
+            </div>
+            <div class="form-group">
+                <select id="dest" name="dest" required>
+                    <option value="">Destination</option>
+                    <option value="">Mumbai</option>
+                    <option value="">Goa</option>
+                    <option value="">Kerala</option>
+                    
+                </select>
+            </div> -->
+
+            <div class="form-group">
+                <input type="text" id="source" name="source" placeholder=" source " required>
+            </div>
+           
+            <div class="form-group">
+                <input type="text" id="dest" name="dest" placeholder=" Destination " required>
+            </div>
+            <div class="form-group">
+                <!-- <label for="date">DATE OF TRAVEL</label> -->
+                <input type="date" id="travelDate" name="travelDate" placeholder="DATE OF TRAVEL" required>
+            </div>
+            <div class="form-group">
+                <input type="text" id="availabeSeats" name="availabeSeats" placeholder="Available Seats " required>
+               
+                </div>
+                <div class="form-group">
+                    <select id="bookingStatus" name="bookingStatus" required>
+                        <option value="">Status</option>
+                        <option value="1">Availabile</option>
+                        <option value="2">Full</option>
+                        
+                    </select>
+                </div>
+               
+            <input type="submit" value="BOOK">            
+             
+        </form>
+    </div>
+    
+</body>
+</html>
+
+{% endblock %}
